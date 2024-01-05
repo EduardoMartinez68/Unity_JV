@@ -1,0 +1,130 @@
+{
+  "scopeName": "source.OliK",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#classes"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "--.*?$",
+          "name": "comment.line.OliK"
+        },
+        {
+          "begin": "@//",
+          "end": "//@",
+          "name": "comment.block.OliK"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.OliK",
+          "patterns": [
+            {
+              "match": "''",
+              "name": "constant.character.escape.OliK"
+            }
+          ]
+        },
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.OliK",
+          "patterns": [
+            {
+              "match": "\"\"",
+              "name": "constant.character.escape.OliK"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\d+\\.?\\d*",
+          "name": "constant.numeric.OliK"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(if|else|while|for|and|>|<|end|new|class|public|private|var|int|str|float|bool|void|return|false|true|bool|import|RigidBody|RB|GameObject|Transform|Image|Animator|Collider|MeshRenderer|Color)\\b",
+          "name": "keyword.control.OliK"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b",
+          "name": "variable.other.readwrite.OliK"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "match": "\\b(print|on_collider_enter|on_collider_exit|start|update|Awake|OnEnable|OnDisable|OnDestroy|Play|GetKey|GetMouseButton|GetAxis|OnTriggerEnter|OnTriggerExit)\\b",
+          "name": "entity.name.function.OliK"
+        },
+        {
+          "match": "\\bfunc\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(.*?\\)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.OliK"
+            }
+          }
+        },
+        {
+          "match": "\\.[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(.*?\\)",
+          "name": "entity.name.function.OliK"
+        }
+      ]
+    },
+    "classes": {
+        "patterns": [
+          {
+            "match": "\\bclass\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(.*?\\)",
+            "name": "entity.name.type.class.OliK"
+          }
+        ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": ">|<|==|!=|<=|>=|&&|\\|\\|",
+          "name": "keyword.operator.OliK"
+        }
+      ]
+    }
+  }
+}

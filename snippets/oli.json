@@ -1,0 +1,87 @@
+{
+    "Print Statement": {
+        "prefix": "print",
+        "body": [
+            "print()"
+        ],
+        "description": "Log to console"
+    },
+    "if method": {
+        "prefix": "if",
+        "body": [
+            "if ():",
+            "    ",
+            "end"
+        ],
+        "description": "Log to console"
+    },
+    "code C": {
+        "prefix": "@",
+        "body": [
+            "@//",
+            "//@"
+        ],
+        "description": "Log to console"
+    },
+    "OnCollisionEnter":{
+        "prefix": "on_collider_enter",
+        "body": [
+            "void on_collider_enter(Collider other) {",
+            "  ",
+            "}"
+        ],
+        "description": "Log to console"
+    },
+    "OnCollisionExit":{
+        "prefix": "on_collider_exit",
+        "body": [
+            "void on_collider_exit(Collider other) {",
+            "  ",
+            "}"
+        ],
+        "description": "Log to console"
+    },
+    "OnTriggerEnter":{
+        "prefix": "OnTriggerEnter",
+        "body": [
+            "void OnTriggerEnter(Collider other) {",
+            "  ",
+            "}"
+        ],
+        "description": "Log to console"
+    },
+    "OnTriggerExit":{
+        "prefix": "OnTriggerExit",
+        "body": [
+            "void OnTriggerExit(Collider other) {",
+            "  ",
+            "}"
+        ],
+        "description": "Log to console"
+    },
+    "Input.GetKey":{
+        "prefix": "input()",
+        "body": [
+            "input()"
+        ],
+        "description": "Log to console"
+    },
+    "update":{
+        "prefix": "update()",
+        "body": [
+            "void update():",
+            "",
+            "end"
+        ],
+        "description": "Log to console"
+    },
+    "start":{
+        "prefix": "start()",
+        "body": [
+            "void start():",
+            "",
+            "end"
+        ],
+        "description": "Log to console"
+    }
+}

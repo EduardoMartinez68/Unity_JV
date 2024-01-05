@@ -1,0 +1,55 @@
+{
+    "name": "jv-unity",
+    "displayName": "Unity Oli",
+    "description": "New language for Unity",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "OliK",
+                "aliases": [
+                    "Unity JV",
+                    "jv"
+                ],
+                "extensions": [
+                    ".jv"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "OliK",
+                "scopeName": "source.OliK",
+                "path": "./syntaxes/Oli.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "OliK",
+                "path": "./snippets/oli.json"
+            }
+        ],
+        "icon": {
+            "light": "./icons/icon.svg",
+            "dark": "./icons/icon.svg"
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ."
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/vscode": "^1.85.0",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.3.3",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    }
+}

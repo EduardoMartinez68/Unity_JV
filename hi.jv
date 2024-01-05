@@ -1,0 +1,34 @@
+--hola 
+print('hi')
+int num=5
+float num2=10
+str message='hi'
+bool value=true 
+
+--
+    this is a comment 
+    how is my friend
+--
+
+@//
+    //this comment is in C
+    for(int i=0;i<10;i++){
+        Debug.Log(i);
+    }
+//@
+
+
+>int func on_collider_enter():
+    pass 
+
+<void func on_collider_enter():
+    print('hi')
+
+    #--
+        this is a comment 
+    --#
+end
+
+func ft():
+    return 1+1;
+end

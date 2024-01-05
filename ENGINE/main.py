@@ -6,7 +6,7 @@ import readJv
     we will reading all the file in the list filesJv and create the new file .cpp
 '''
 
-projectPath='C:\\Users\\USER\\Fuck Online\\Assets' #this is for save the path of your unity project (script folder)
+projectPath='C:\\Users\\USER\\Fuck You\\Assets' #this is for save the path of your unity project (script folder)
 currentFolder=os.getcwd() #get the current folder
 pathFilesJv=[] #this is la list for save the path of the file jv
 foldersPath=[] #this is for save the folder of the project 

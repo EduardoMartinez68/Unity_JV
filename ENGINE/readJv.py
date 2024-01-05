@@ -1,8 +1,10 @@
 readC=False
 readT=False
+readComment=False
 
 #vsce package
 def read_line_for_line(file,output_file):
+    global readComment
     for line in file:
         words = line.split()  
         textClass=''
@@ -17,16 +19,17 @@ def read_line_for_line(file,output_file):
         #If we are reading a class, update it
         if textClass=='':
             read_word_for_word(words,output_file)
-            add_semicolon(line,output_file)
+            #add_semicolon(line,output_file)
         else:
             output_file.write(textClass)
+        readComment=False
         output_file.write('\n')
 
 
 def add_semicolon(line,output_file):
-    if '#' in line:
+    if '--' in line:
         pass 
-    if '//' in line:
+    elif '//' in line:
         pass 
     elif ':' in line:
         pass
@@ -38,51 +41,98 @@ def add_semicolon(line,output_file):
         pass
     elif '}' in line:
         pass
-    elif 'do' in line:
+    elif 'if' in line:
+        pass
+    elif 'else' in line:
+        pass
+    elif 'for' in line:
+        print(line)
+    elif 'while' in line:
         pass
     else:
         if not line.isspace():
             output_file.write(';')
+            
 
 def read_word_for_word(words,output_file):
-    for word in words:
-        code=read_syntax(word)  
-        output_file.write(code)
+    #we will see if the array not is empty
+    if not words:
+        return 
+    
+    #if the array not is empty we will watch if in the words exist a <code> for not add semicolon 
+    semicolon=False
+    for index, word in enumerate(words): #we will read all word
+        code=read_syntax(word)   #get the new syntax cpp of unity
 
+        #we will watch if not is reading code C#
+        if not readC:
+            semicolon=this_word_is_a_code(word,semicolon) 
+            if '--' in word:
+                if not index==0:
+                    output_file.write(';')
+
+        output_file.write(code)
+    
+    #we will watch if not is reading code C#
+    if not readC:
+        if not semicolon: #if there is not <code> we add semicolon
+            output_file.write(';')
+
+def this_word_is_a_code(word,semicolon):
+    #we will see if the word is a function 
+    if ':' in word:
+        return True
+    
+    if '@' in word:
+        return True
+    
+    #we will see if the word is a code 
+    codes=['if','else','end',':','--','for','foreach','while','@']
+    for code in codes:
+        if word==code:
+            return True 
+        
+    return semicolon
 def read_syntax(word):
     #we will replace the syntax 
     answer=''
-    global readC,readT
-    if 'import' in word:
+
+    #we will see if the word is with that
+    global readC,readT,readComment
+
+    #we will see if exist a component 
+    if 'import'==word:
         answer='using '
-    elif 'class' in word:
+    elif 'class'==word:
         answer='public '+word 
-    elif 'start' in word:
+    elif 'start'==word:
         answer='Start(){'
-    elif 'update' in word:
+    elif 'update'==word:
         answer='Update(){'
-    elif 'on_collider_enter' in word:
-        answer=word.replace('on_collider_enter', 'onColliderEnter')
-    elif 'on_collider_exit' in word:
-        answer='onColliderExit('
-    elif 'if' in word:
+    elif 'if'==word:
         answer='if ('
-    elif 'for' in word:
-        answer='for ('
-    elif 'while' in word:
-        answer='while ('
-    elif 'do' in word:
+    elif word=='do':
         answer=word.replace('do', '){')
-    elif 'else' in word:
+    elif 'for'==word:
+        answer='for ('
+    elif 'foreach'==word:
+        answer='foreach ('
+    elif 'while'==word:
+        answer='while ('
+    elif 'else'==word:
         answer='}'+word+'{'
     elif ':' in word:
         answer=word.replace(':', '{')
-    elif 'end' in word:
-        answer='}'
+    elif 'end'==word:
+        answer=word.replace('end', '}')
+
+
+    #we will see if this is a command 
     elif '#' in word:
         answer=word.replace('#', '//')
     elif '--' in word:
-        answer=word.replace('--', '//')
+        word=word.replace('--', '//')
+        readComment=True
     elif 'str' in word:
         answer=word.replace('str', 'string ')
     elif 'print' in word:
@@ -98,14 +148,7 @@ def read_syntax(word):
 
     if "'" in answer:
         answer=answer.replace("'", '"')
-        readT=not readT
-    #this is if the user need a variable public or private
-    '''
-    if '>' in answer:
-        answer=answer.replace('>', 'public ')
-    elif '<' in answer:
-        answer=answer.replace('<', 'private ')
-    '''
+        #readT=not readT
 
     #this is for create a component
     if '<' in word and '>' in word:
@@ -113,9 +156,8 @@ def read_syntax(word):
         answer = f"{word.split('=')[0]}=GetComponent<{nameComponent}>()"
 
     
-    
     #we will see if is reading c++ or <lio>
-    if readC:
+    if readC or readComment or readT:
         return word+' '
     else:
         answer=answer

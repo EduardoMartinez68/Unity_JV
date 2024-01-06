@@ -7,9 +7,15 @@ def read_line_for_line(file,output_file):
     global readComment
     for line in file:
         words = line.split()  
+
         textClass=''
         #we will see if this line is a class
-        if len(words)>0:
+        sizeWord=len(words)
+        if sizeWord>0:
+            #we will see if the line is a import 
+            if words[0]=='import' and sizeWord>=2:
+                textClass=create_library_section(words)
+                print(textClass)
             if words[0] in "class":
                 words[1]=words[1].replace(':','')
                 words[1]=words[1].replace('(',':')
@@ -25,6 +31,25 @@ def read_line_for_line(file,output_file):
         readComment=False
         output_file.write('\n')
 
+
+
+def create_library_section(words):
+    section=''
+
+    #get the library import      
+    package=words[1] 
+
+    #read all the library from the index 2
+    for library in words[2:]:
+        library=library.replace("'",'')
+        #We will see if we have the same library as the package.
+        if library=='.':
+            section+=f'using {package};\n'
+        else:
+            #create the import 
+            section+=f'using {package}.{library};\n'
+    
+    return section
 
 def add_semicolon(line,output_file):
     if '--' in line:
@@ -53,7 +78,6 @@ def add_semicolon(line,output_file):
         if not line.isspace():
             output_file.write(';')
             
-
 def read_word_for_word(words,output_file):
     #we will see if the array not is empty
     if not words:
@@ -93,6 +117,7 @@ def this_word_is_a_code(word,semicolon):
             return True 
         
     return semicolon
+
 def read_syntax(word):
     #we will replace the syntax 
     answer=''
@@ -173,3 +198,5 @@ def read_file(pathFile,pathFileUnity):
         print(f"No se pudo encontrar el archivo: {pathFile}")
     except Exception as e:
         print(f"Ocurrió un error: {e}")
+
+#path

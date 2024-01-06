@@ -19,17 +19,82 @@ Welcome to the Unity JV language extension for Visual Studio Code! This extensio
 The Unity JV language aims to make game development in Unity more accessible and efficient. Write code in Unity JV and let the extension handle the translation to C#.
 
 ```jv
-// Unity JV Example
-func Start():
-    print("Hello Unity JV!")
+--Unity JV Example
+import System 'Collections' 'Collections.Generic'
+import UnityEngine '.' 'UI'
+
+class HumanShield(MonoBehaviour):
+    private bool value=false
+    private float num1=10f
+    private int num2
+    public GameObject prefabs
+    private Image image
+    public Sprite[] sprite
+    private Rigidbody rb 
+
+    void Start():
+        print("Hello Unity JV!")
+        rb=<RB>
+        image=<Image>
+
+        @//
+            Debug.Log("Hi Unity") //this is code C#
+        //@
+    end
+
+    private bool the_player_interacts():
+        return Input.GetMouseButtonDown(1)
+    end 
+
+    void update():
+        --we will see if the player would like interacts with the human shield
+        if the_player_interacts() do
+            --this is for draw the shield
+            print("Hello Unity JV!")
+        end
+    end 
+end 
 
 // Translated C# Code
+using System.Collections;
+using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class YourScript : MonoBehaviour
 {
+    private bool value = false;
+    private float num1 = 10f;
+    private int num2;
+    public GameObject prefabs;
+    private Image image;
+    public Sprite[] sprite;
+    private Rigidbody rb;
+
     void Start()
     {
         Debug.Log("Hello Unity JV!");
+        rb = GetComponent<RigidBody>();
+        image = GetComponent<Image>();
+
+
+        Debug.Log("Hi Unity") //this is code C# 
+
+    }
+
+    private bool the_player_interacts()
+    {
+        return Input.GetMouseButtonDown(1);
+    }
+
+    void update()
+    {
+        //we will see if the player would like interacts with the human shield 
+        if (the_player_interacts())
+        {
+            //this is for draw the shield 
+            Debug.Log("Hello Unity JV!");
+        }
     }
 }

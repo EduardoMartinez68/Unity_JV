@@ -47,9 +47,9 @@ class HumanShield(MonoBehaviour):
     end 
 
     void update():
-        --we will see if the player would like interacts with the human shield
+        --we will see if the player would like interacts
         if the_player_interacts() do
-            --this is for draw the shield
+            --this a debug in JV
             print("Hello Unity JV!")
         end
     end 
@@ -90,10 +90,10 @@ public class YourScript : MonoBehaviour
 
     void update()
     {
-        //we will see if the player would like interacts with the human shield 
+        //we will see if the player would like interacts 
         if (the_player_interacts())
         {
-            //this is for draw the shield 
+            //this a debug in JV
             Debug.Log("Hello Unity JV!");
         }
     }

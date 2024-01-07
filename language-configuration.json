@@ -9,19 +9,25 @@
         ["(", ")"],
         ["<", ">"],
         ["'", "'"],
+        [":", "end"],
+        ["do", "end"],
     ],
     "autoClosingPairs": [
         {"open": "{", "close": "}"},
         {"open": "[", "close": "]"},
         {"open": "(", "close": ")"},
         {"open": "<", "close": ">"},
-        {"open": "'", "close": "'"}
+        {"open": "'", "close": "'"},
+        {"open": ":", "close": "end"},
+        {"open": "do", "close": "end"}
     ],
     "surroundingPairs": [
         {"open": "{", "close": "}"},
         {"open": "[", "close": "]"},
         {"open": "(", "close": ")"},
         {"open": "<", "close": ">"},
-        {"open": "'", "close": "'"}
+        {"open": "'", "close": "'"},
+        {"open": ":", "close": "end"},
+        {"open": "do", "close": "end"}
     ]
 }

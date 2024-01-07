@@ -15,7 +15,6 @@ def read_line_for_line(file,output_file):
             #we will see if the line is a import 
             if words[0]=='import' and sizeWord>=2:
                 textClass=create_library_section(words)
-                print(textClass)
             if words[0] in "class":
                 words[1]=words[1].replace(':','')
                 words[1]=words[1].replace('(',':')
@@ -36,7 +35,7 @@ def read_line_for_line(file,output_file):
 def create_library_section(words):
     section=''
 
-    #get the library import      
+    #get the library import
     package=words[1] 
 
     #read all the library from the index 2

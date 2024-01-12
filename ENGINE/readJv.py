@@ -13,8 +13,9 @@ def read_line_for_line(file,output_file):
         sizeWord=len(words)
         if sizeWord>0:
             #we will see if the line is a import 
-            if words[0]=='import' and sizeWord>=2:
+            if words[0]=='from' and sizeWord>=3:
                 textClass=create_library_section(words)
+                print(textClass)
             if words[0] in "class":
                 words[1]=words[1].replace(':','')
                 words[1]=words[1].replace('(',':')
@@ -26,6 +27,8 @@ def read_line_for_line(file,output_file):
             read_word_for_word(words,output_file)
             #add_semicolon(line,output_file)
         else:
+            print('2')
+            print(textClass)
             output_file.write(textClass)
         readComment=False
         output_file.write('\n')
@@ -38,8 +41,8 @@ def create_library_section(words):
     #get the library import
     package=words[1] 
 
-    #read all the library from the index 2
-    for library in words[2:]:
+    #read all the library from the index 3
+    for library in words[3:]:
         library=library.replace("'",'')
         #We will see if we have the same library as the package.
         if library=='.':
@@ -47,7 +50,6 @@ def create_library_section(words):
         else:
             #create the import 
             section+=f'using {package}.{library};\n'
-    
     return section
 
 def add_semicolon(line,output_file):
@@ -157,7 +159,7 @@ def read_syntax(word):
     elif '--' in word:
         word=word.replace('--', '//')
         readComment=True
-    elif 'str' in word:
+    elif 'str'==word:
         answer=word.replace('str', 'string ')
     elif 'print' in word:
         answer=word.replace('print', 'Debug.Log')

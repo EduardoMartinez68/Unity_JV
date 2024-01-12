@@ -2,6 +2,8 @@
 
 Welcome to the Unity JV language extension for Visual Studio Code! This extension provides support for programming in a new language inspired by Python and Lua, designed to streamline and simplify the process of coding for the Unity game engine.
 
+![Log](img/jv.png)
+
 ## Features
 
 - **Syntax Highlighting:** Enjoy syntax highlighting tailored for the Unity JV language to make your code visually appealing and easy to read.

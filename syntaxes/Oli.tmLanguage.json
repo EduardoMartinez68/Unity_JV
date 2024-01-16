@@ -77,7 +77,7 @@
     "keywords": {
       "patterns": [
         {
-          "match": "\\b(if|else|while|for|foreach|in|null|and|do|end|break|exit|case|new|class|public|private|var|int|str|float|bool|void|return|false|true|bool|import|RigidBody|RB|GameObject|Transform|Vector3|Vector2|Image|Sprite|Animator|Collider|MeshRenderer|Color)\\b",
+          "match": "\\b(if|else|while|for|foreach|in|null|and|or|do|end|break|exit|case|new|class|public|private|var|int|str|float|bool|void|return|false|true|bool|import|from|RigidBody|RB|GameObject|Transform|Vector3|Vector2|Image|Sprite|Animator|Collider|MeshRenderer|Color)\\b",
           "name": "keyword.control.OliK"
         }
       ]
@@ -93,7 +93,7 @@
     "functions": {
       "patterns": [
         {
-          "match": "\\b(print|OnCollisionEnter|OnCollisionStay|OnTriggerEnter|OnTriggerStay|OnTriggerExit|OnCollisionExit|start|update|Awake|Invoke|OnEnable|OnDisable|OnDestroy|Play|GetKey|GetMouseButton|GetAxis|OnTriggerEnter|OnTriggerExit|Instantiate|[a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+          "match": "\\b(print|OnCollisionEnter|OnCollisionStay|OnTriggerEnter|OnTriggerStay|OnTriggerExit|OnCollisionExit|Start|Update|Awake|Invoke|OnEnable|OnDisable|OnDestroy|Play|GetKey|GetMouseButton|GetAxis|OnTriggerEnter|OnTriggerExit|Instantiate|[a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
           "captures": {
             "1": {
               "name": "entity.name.function.OliK"

@@ -17,17 +17,17 @@
         {"open": "[", "close": "]"},
         {"open": "(", "close": ")"},
         {"open": "<", "close": ">"},
-        {"open": "'", "close": "'"},
         {"open": ":", "close": "end"},
-        {"open": "do", "close": "end"}
+        {"open": "do", "close": "end"},
+        {"open": "'", "close": "'"}
     ],
     "surroundingPairs": [
         {"open": "{", "close": "}"},
         {"open": "[", "close": "]"},
         {"open": "(", "close": ")"},
         {"open": "<", "close": ">"},
-        {"open": "'", "close": "'"},
         {"open": ":", "close": "end"},
-        {"open": "do", "close": "end"}
+        {"open": "do", "close": "end"},
+        {"open": "'", "close": "'"}
     ]
 }

@@ -15,7 +15,6 @@ def read_line_for_line(file,output_file):
             #we will see if the line is a import 
             if words[0]=='from' and sizeWord>=3:
                 textClass=create_library_section(words)
-                print(textClass)
             if words[0] in "class":
                 words[1]=words[1].replace(':','')
                 words[1]=words[1].replace('(',':')
@@ -27,8 +26,6 @@ def read_line_for_line(file,output_file):
             read_word_for_word(words,output_file)
             #add_semicolon(line,output_file)
         else:
-            print('2')
-            print(textClass)
             output_file.write(textClass)
         readComment=False
         output_file.write('\n')
@@ -164,7 +161,7 @@ def read_syntax(word):
     elif 'print' in word:
         answer=word.replace('print', 'Debug.Log')
     elif '<RB>' in word:
-        answer=word.replace('<RB>', 'GetComponent<RigidBody>()')
+        answer=word.replace('<RB>', 'GetComponent<Rigidbody>()')
         return answer
     elif '@' in word:
         readC=not readC

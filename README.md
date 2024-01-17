@@ -16,16 +16,17 @@ Welcome to the Unity JV language extension for Visual Studio Code! This extensio
 2. Open a file with the extension `.jv` to start using the Unity JV language features.
 3. Experience faster and more efficient development within the Unity environment.
 
-## Usage
+![Log](img/code1.png)
 
+## Usage
 The Unity JV language aims to make game development in Unity more accessible and efficient. Write code in Unity JV and let the extension handle the translation to C#.
 
 ```jv
---Unity JV Example
-import System 'Collections' 'Collections.Generic'
-import UnityEngine '.' 'UI'
-
-class HumanShield(MonoBehaviour):
+//------------------------------------------------------Unity JV Example
+from System import 'Collections' 'Collections.Generic'
+from UnityEngine import '.' 'UI'
+--rest 4 lines
+class NameClass(MonoBehaviour):
     private bool value=false
     private float num1=10f
     private int num2
@@ -40,31 +41,31 @@ class HumanShield(MonoBehaviour):
         image=<Image>
 
         @//
-            Debug.Log("Hi Unity") //this is code C#
+            Debug.Log("Hi Unity"); //this is code C#
         //@
     end
-
+    
     private bool the_player_interacts():
         return Input.GetMouseButtonDown(1)
     end 
 
-    void update():
+    void Update():
         --we will see if the player would like interacts
         if the_player_interacts() do
             --this a debug in JV
             print("Hello Unity JV!")
         end
-    end 
-end 
-
-// Translated C# Code
+    end
+end
+//------------------------------------------------------Translated C# Code
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
 
-public class YourScript : MonoBehaviour
+//rest 4 lines ;
+public class NameClass : MonoBehaviour
 {
     private bool value = false;
     private float num1 = 10f;
@@ -81,8 +82,7 @@ public class YourScript : MonoBehaviour
         image = GetComponent<Image>();
 
 
-        Debug.Log("Hi Unity") //this is code C# 
-
+        Debug.Log("Hi Unity"); //this is code C# 
     }
 
     private bool the_player_interacts()
@@ -90,13 +90,14 @@ public class YourScript : MonoBehaviour
         return Input.GetMouseButtonDown(1);
     }
 
-    void update()
+    void Update()
     {
         //we will see if the player would like interacts 
         if (the_player_interacts())
         {
-            //this a debug in JV
+            //this a debug in JV ;
             Debug.Log("Hello Unity JV!");
         }
     }
 }
+
